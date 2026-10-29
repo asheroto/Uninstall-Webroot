@@ -8,7 +8,7 @@
 
 # Uninstall Webroot from PowerShell
 
-**Removes Webroot SecureAnywhere (now OpenText Endpoint Protection) by force, including when its uninstaller is broken or already gone. Cleans up the services, registry keys, folders and uninstall entries it leaves behind.**
+**Removes Webroot SecureAnywhere (now OpenText Endpoint Protection). Runs the Webroot uninstaller first, then cleans up the services, registry keys, folders and uninstall entries it leaves behind. Still works when the uninstaller is broken or already gone.**
 
 ## Table of Contents
 
@@ -29,7 +29,7 @@
 ## Requirements
 
 -   Requires PowerShell running with Administrator privileges
--   Must be run interactively, the Webroot uninstall prompt needs a click
+-   Must be run interactively unless `-Force` is used, the Webroot uninstall prompt needs a click
 -   Compatible with:
     -   Windows 10
     -   Windows 11
@@ -47,7 +47,7 @@
 -   Runs `WRSA.exe -uninstall` if WRSA.exe is present (skipped with `-Force`) and waits for you to answer the prompt
 -   Stops and deletes the `WRSVC`, `WRCoreService` and `WRSkyClient` services
 -   Kills any running `WRSA` process
--   Removes the Webroot registry keys under `HKLM\SOFTWARE` and the `WR*` service and driver keys under `HKLM\SYSTEM`
+-   Removes the Webroot registry keys under `HKLM\SOFTWARE` and the `WRSVC`, `WRkrn`, `WRBoot`, `WRCore`, `WRCoreService` and `wrUrlFlt` service and driver keys under `HKLM\SYSTEM`
 -   Removes the `WRSVC` startup entry
 -   Removes the Webroot folders under Program Files, ProgramData and the Start Menu
 -   Removes any uninstall entry whose name mentions Webroot
