@@ -1,6 +1,6 @@
 <#PSScriptInfo
 
-.VERSION 1.0.0
+.VERSION 1.0.1
 
 .GUID c81e25c3-42d9-4e88-9f73-c841292e44ee
 
@@ -14,6 +14,7 @@
 
 .RELEASENOTES
 [Version 1.0.0] - Initial release.
+[Version 1.0.1] - With -Force, the leftover message no longer says the uninstaller has already been removed.
 
 #>
 
@@ -182,6 +183,9 @@ $Leftovers += @(Get-Service -Name $Services -ErrorAction SilentlyContinue | ForE
 if ($Leftovers) {
     if ($UninstallerRan) {
         Write-Output "Still present - make sure the uninstall prompt was answered Yes and run the script again, or run it with -Force to skip the uninstaller:"
+    }
+    elseif ($Force) {
+        Write-Output "Still present - reboot to unload the drivers and run the script again:"
     }
     else {
         Write-Output "Still present - the uninstaller has already been removed, so reboot to unload the drivers and run the script again:"

@@ -116,6 +116,7 @@ The last lines of output are the result:
 | `Nothing left - Webroot has been removed`                              | Done.                                                                                                     |
 | `Still present - make sure the uninstall prompt was answered Yes ...`  | The uninstaller ran but did not finish. Run again, or run with `-Force`.                                  |
 | `Still present - the uninstaller has already been removed ...`         | Webroot drivers are still loaded. Reboot and run again.                                                   |
+| `Still present - reboot to unload the drivers ...`                     | Same, after a `-Force` run. Reboot and run again.                                                         |
 
 The leftover items are listed below the `Still present` line.
 
